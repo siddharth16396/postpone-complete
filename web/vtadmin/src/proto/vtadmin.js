@@ -206754,6 +206754,413 @@ export const vtctldata = $root.vtctldata = (() => {
         return SetVtorcEmergencyReparentResponse;
     })();
 
+    vtctldata.UpdateQueryThrottlerConfigRequest = (function() {
+
+        /**
+         * Properties of an UpdateQueryThrottlerConfigRequest.
+         * @memberof vtctldata
+         * @interface IUpdateQueryThrottlerConfigRequest
+         * @property {string|null} [keyspace] UpdateQueryThrottlerConfigRequest keyspace
+         * @property {querythrottler.IConfig|null} [query_throttler_config] UpdateQueryThrottlerConfigRequest query_throttler_config
+         */
+
+        /**
+         * Constructs a new UpdateQueryThrottlerConfigRequest.
+         * @memberof vtctldata
+         * @classdesc Represents an UpdateQueryThrottlerConfigRequest.
+         * @implements IUpdateQueryThrottlerConfigRequest
+         * @constructor
+         * @param {vtctldata.IUpdateQueryThrottlerConfigRequest=} [properties] Properties to set
+         */
+        function UpdateQueryThrottlerConfigRequest(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * UpdateQueryThrottlerConfigRequest keyspace.
+         * @member {string} keyspace
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @instance
+         */
+        UpdateQueryThrottlerConfigRequest.prototype.keyspace = "";
+
+        /**
+         * UpdateQueryThrottlerConfigRequest query_throttler_config.
+         * @member {querythrottler.IConfig|null|undefined} query_throttler_config
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @instance
+         */
+        UpdateQueryThrottlerConfigRequest.prototype.query_throttler_config = null;
+
+        /**
+         * Creates a new UpdateQueryThrottlerConfigRequest instance using the specified properties.
+         * @function create
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @static
+         * @param {vtctldata.IUpdateQueryThrottlerConfigRequest=} [properties] Properties to set
+         * @returns {vtctldata.UpdateQueryThrottlerConfigRequest} UpdateQueryThrottlerConfigRequest instance
+         */
+        UpdateQueryThrottlerConfigRequest.create = function create(properties) {
+            return new UpdateQueryThrottlerConfigRequest(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateQueryThrottlerConfigRequest message. Does not implicitly {@link vtctldata.UpdateQueryThrottlerConfigRequest.verify|verify} messages.
+         * @function encode
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @static
+         * @param {vtctldata.IUpdateQueryThrottlerConfigRequest} message UpdateQueryThrottlerConfigRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateQueryThrottlerConfigRequest.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            if (message.keyspace != null && Object.hasOwnProperty.call(message, "keyspace"))
+                writer.uint32(/* id 1, wireType 2 =*/10).string(message.keyspace);
+            if (message.query_throttler_config != null && Object.hasOwnProperty.call(message, "query_throttler_config"))
+                $root.querythrottler.Config.encode(message.query_throttler_config, writer.uint32(/* id 2, wireType 2 =*/18).fork()).ldelim();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateQueryThrottlerConfigRequest message, length delimited. Does not implicitly {@link vtctldata.UpdateQueryThrottlerConfigRequest.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @static
+         * @param {vtctldata.IUpdateQueryThrottlerConfigRequest} message UpdateQueryThrottlerConfigRequest message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateQueryThrottlerConfigRequest.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateQueryThrottlerConfigRequest message from the specified reader or buffer.
+         * @function decode
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {vtctldata.UpdateQueryThrottlerConfigRequest} UpdateQueryThrottlerConfigRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateQueryThrottlerConfigRequest.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.vtctldata.UpdateQueryThrottlerConfigRequest();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                case 1: {
+                        message.keyspace = reader.string();
+                        break;
+                    }
+                case 2: {
+                        message.query_throttler_config = $root.querythrottler.Config.decode(reader, reader.uint32());
+                        break;
+                    }
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateQueryThrottlerConfigRequest message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {vtctldata.UpdateQueryThrottlerConfigRequest} UpdateQueryThrottlerConfigRequest
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateQueryThrottlerConfigRequest.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateQueryThrottlerConfigRequest message.
+         * @function verify
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateQueryThrottlerConfigRequest.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            if (message.keyspace != null && message.hasOwnProperty("keyspace"))
+                if (!$util.isString(message.keyspace))
+                    return "keyspace: string expected";
+            if (message.query_throttler_config != null && message.hasOwnProperty("query_throttler_config")) {
+                let error = $root.querythrottler.Config.verify(message.query_throttler_config);
+                if (error)
+                    return "query_throttler_config." + error;
+            }
+            return null;
+        };
+
+        /**
+         * Creates an UpdateQueryThrottlerConfigRequest message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {vtctldata.UpdateQueryThrottlerConfigRequest} UpdateQueryThrottlerConfigRequest
+         */
+        UpdateQueryThrottlerConfigRequest.fromObject = function fromObject(object) {
+            if (object instanceof $root.vtctldata.UpdateQueryThrottlerConfigRequest)
+                return object;
+            let message = new $root.vtctldata.UpdateQueryThrottlerConfigRequest();
+            if (object.keyspace != null)
+                message.keyspace = String(object.keyspace);
+            if (object.query_throttler_config != null) {
+                if (typeof object.query_throttler_config !== "object")
+                    throw TypeError(".vtctldata.UpdateQueryThrottlerConfigRequest.query_throttler_config: object expected");
+                message.query_throttler_config = $root.querythrottler.Config.fromObject(object.query_throttler_config);
+            }
+            return message;
+        };
+
+        /**
+         * Creates a plain object from an UpdateQueryThrottlerConfigRequest message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @static
+         * @param {vtctldata.UpdateQueryThrottlerConfigRequest} message UpdateQueryThrottlerConfigRequest
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateQueryThrottlerConfigRequest.toObject = function toObject(message, options) {
+            if (!options)
+                options = {};
+            let object = {};
+            if (options.defaults) {
+                object.keyspace = "";
+                object.query_throttler_config = null;
+            }
+            if (message.keyspace != null && message.hasOwnProperty("keyspace"))
+                object.keyspace = message.keyspace;
+            if (message.query_throttler_config != null && message.hasOwnProperty("query_throttler_config"))
+                object.query_throttler_config = $root.querythrottler.Config.toObject(message.query_throttler_config, options);
+            return object;
+        };
+
+        /**
+         * Converts this UpdateQueryThrottlerConfigRequest to JSON.
+         * @function toJSON
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateQueryThrottlerConfigRequest.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for UpdateQueryThrottlerConfigRequest
+         * @function getTypeUrl
+         * @memberof vtctldata.UpdateQueryThrottlerConfigRequest
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        UpdateQueryThrottlerConfigRequest.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/vtctldata.UpdateQueryThrottlerConfigRequest";
+        };
+
+        return UpdateQueryThrottlerConfigRequest;
+    })();
+
+    vtctldata.UpdateQueryThrottlerConfigResponse = (function() {
+
+        /**
+         * Properties of an UpdateQueryThrottlerConfigResponse.
+         * @memberof vtctldata
+         * @interface IUpdateQueryThrottlerConfigResponse
+         */
+
+        /**
+         * Constructs a new UpdateQueryThrottlerConfigResponse.
+         * @memberof vtctldata
+         * @classdesc Represents an UpdateQueryThrottlerConfigResponse.
+         * @implements IUpdateQueryThrottlerConfigResponse
+         * @constructor
+         * @param {vtctldata.IUpdateQueryThrottlerConfigResponse=} [properties] Properties to set
+         */
+        function UpdateQueryThrottlerConfigResponse(properties) {
+            if (properties)
+                for (let keys = Object.keys(properties), i = 0; i < keys.length; ++i)
+                    if (properties[keys[i]] != null)
+                        this[keys[i]] = properties[keys[i]];
+        }
+
+        /**
+         * Creates a new UpdateQueryThrottlerConfigResponse instance using the specified properties.
+         * @function create
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @static
+         * @param {vtctldata.IUpdateQueryThrottlerConfigResponse=} [properties] Properties to set
+         * @returns {vtctldata.UpdateQueryThrottlerConfigResponse} UpdateQueryThrottlerConfigResponse instance
+         */
+        UpdateQueryThrottlerConfigResponse.create = function create(properties) {
+            return new UpdateQueryThrottlerConfigResponse(properties);
+        };
+
+        /**
+         * Encodes the specified UpdateQueryThrottlerConfigResponse message. Does not implicitly {@link vtctldata.UpdateQueryThrottlerConfigResponse.verify|verify} messages.
+         * @function encode
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @static
+         * @param {vtctldata.IUpdateQueryThrottlerConfigResponse} message UpdateQueryThrottlerConfigResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateQueryThrottlerConfigResponse.encode = function encode(message, writer) {
+            if (!writer)
+                writer = $Writer.create();
+            return writer;
+        };
+
+        /**
+         * Encodes the specified UpdateQueryThrottlerConfigResponse message, length delimited. Does not implicitly {@link vtctldata.UpdateQueryThrottlerConfigResponse.verify|verify} messages.
+         * @function encodeDelimited
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @static
+         * @param {vtctldata.IUpdateQueryThrottlerConfigResponse} message UpdateQueryThrottlerConfigResponse message or plain object to encode
+         * @param {$protobuf.Writer} [writer] Writer to encode to
+         * @returns {$protobuf.Writer} Writer
+         */
+        UpdateQueryThrottlerConfigResponse.encodeDelimited = function encodeDelimited(message, writer) {
+            return this.encode(message, writer).ldelim();
+        };
+
+        /**
+         * Decodes an UpdateQueryThrottlerConfigResponse message from the specified reader or buffer.
+         * @function decode
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @param {number} [length] Message length if known beforehand
+         * @returns {vtctldata.UpdateQueryThrottlerConfigResponse} UpdateQueryThrottlerConfigResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateQueryThrottlerConfigResponse.decode = function decode(reader, length) {
+            if (!(reader instanceof $Reader))
+                reader = $Reader.create(reader);
+            let end = length === undefined ? reader.len : reader.pos + length, message = new $root.vtctldata.UpdateQueryThrottlerConfigResponse();
+            while (reader.pos < end) {
+                let tag = reader.uint32();
+                switch (tag >>> 3) {
+                default:
+                    reader.skipType(tag & 7);
+                    break;
+                }
+            }
+            return message;
+        };
+
+        /**
+         * Decodes an UpdateQueryThrottlerConfigResponse message from the specified reader or buffer, length delimited.
+         * @function decodeDelimited
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @static
+         * @param {$protobuf.Reader|Uint8Array} reader Reader or buffer to decode from
+         * @returns {vtctldata.UpdateQueryThrottlerConfigResponse} UpdateQueryThrottlerConfigResponse
+         * @throws {Error} If the payload is not a reader or valid buffer
+         * @throws {$protobuf.util.ProtocolError} If required fields are missing
+         */
+        UpdateQueryThrottlerConfigResponse.decodeDelimited = function decodeDelimited(reader) {
+            if (!(reader instanceof $Reader))
+                reader = new $Reader(reader);
+            return this.decode(reader, reader.uint32());
+        };
+
+        /**
+         * Verifies an UpdateQueryThrottlerConfigResponse message.
+         * @function verify
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @static
+         * @param {Object.<string,*>} message Plain object to verify
+         * @returns {string|null} `null` if valid, otherwise the reason why it is not
+         */
+        UpdateQueryThrottlerConfigResponse.verify = function verify(message) {
+            if (typeof message !== "object" || message === null)
+                return "object expected";
+            return null;
+        };
+
+        /**
+         * Creates an UpdateQueryThrottlerConfigResponse message from a plain object. Also converts values to their respective internal types.
+         * @function fromObject
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @static
+         * @param {Object.<string,*>} object Plain object
+         * @returns {vtctldata.UpdateQueryThrottlerConfigResponse} UpdateQueryThrottlerConfigResponse
+         */
+        UpdateQueryThrottlerConfigResponse.fromObject = function fromObject(object) {
+            if (object instanceof $root.vtctldata.UpdateQueryThrottlerConfigResponse)
+                return object;
+            return new $root.vtctldata.UpdateQueryThrottlerConfigResponse();
+        };
+
+        /**
+         * Creates a plain object from an UpdateQueryThrottlerConfigResponse message. Also converts values to other types if specified.
+         * @function toObject
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @static
+         * @param {vtctldata.UpdateQueryThrottlerConfigResponse} message UpdateQueryThrottlerConfigResponse
+         * @param {$protobuf.IConversionOptions} [options] Conversion options
+         * @returns {Object.<string,*>} Plain object
+         */
+        UpdateQueryThrottlerConfigResponse.toObject = function toObject() {
+            return {};
+        };
+
+        /**
+         * Converts this UpdateQueryThrottlerConfigResponse to JSON.
+         * @function toJSON
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @instance
+         * @returns {Object.<string,*>} JSON object
+         */
+        UpdateQueryThrottlerConfigResponse.prototype.toJSON = function toJSON() {
+            return this.constructor.toObject(this, $protobuf.util.toJSONOptions);
+        };
+
+        /**
+         * Gets the default type url for UpdateQueryThrottlerConfigResponse
+         * @function getTypeUrl
+         * @memberof vtctldata.UpdateQueryThrottlerConfigResponse
+         * @static
+         * @param {string} [typeUrlPrefix] your custom typeUrlPrefix(default "type.googleapis.com")
+         * @returns {string} The default type url
+         */
+        UpdateQueryThrottlerConfigResponse.getTypeUrl = function getTypeUrl(typeUrlPrefix) {
+            if (typeUrlPrefix === undefined) {
+                typeUrlPrefix = "type.googleapis.com";
+            }
+            return typeUrlPrefix + "/vtctldata.UpdateQueryThrottlerConfigResponse";
+        };
+
+        return UpdateQueryThrottlerConfigResponse;
+    })();
+
     return vtctldata;
 })();
 
